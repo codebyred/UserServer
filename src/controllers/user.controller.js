@@ -18,6 +18,8 @@ export const getUser = async (req, res)=>{
 
 export const getUsers = async (req, res)=>{
 
-    return res.json({message:`hello ${req.user.email}`});
+    const users = await User.findAll();
+
+    res.json(users);
 
 }
