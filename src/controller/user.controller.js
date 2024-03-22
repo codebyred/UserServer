@@ -27,7 +27,7 @@ export const postUser = async (req, res)=>{
 
     try{
 
-        const {id, firstName, lastName, email, password, category_id} = await req.body;
+        const {id, firstName, lastName, email, password} = await req.body;
 
         const user = await User.build({
             id: id, 
@@ -35,7 +35,6 @@ export const postUser = async (req, res)=>{
             lastName: lastName, 
             email: email, 
             password: password, 
-            category_id: category_id
         });
 
         await user.save();
