@@ -1,5 +1,5 @@
 import express from "express";
-import routes from "./routes/index.js"
+import router from "./router/index.js"
 import cors from "cors"
 import * as dotenv from "dotenv";
 
@@ -18,7 +18,7 @@ app.use(cors(
     }
 ));
 
-app.use("/userapi/",routes);
+app.use("/api",router);
 
 app.listen(port, async (err) =>{
 
@@ -27,15 +27,15 @@ app.listen(port, async (err) =>{
     console.log(`connection is established on ${port}`);
 
     const register = async(req, res)=>{
+
         const body = {
 
-            api:"userapi",
+            api:"user",
             host:"http://localhost",
             port:3008,
             url:"http://localhost:3008"
     
         }
-        
     
         const fetchOptions = {
             method: 'POST',
@@ -48,20 +48,20 @@ app.listen(port, async (err) =>{
         }
     
         const apiGatewayURL = "http://localhost:3000/register";
+
         const apiGatewayRes = await fetch(apiGatewayURL, fetchOptions);
+
         const data = apiGatewayRes.json();
         
     }
 
-    
-    
     try{    
 
         await register();
 
     }catch(e){
 
-        console.log(e);
+        console.log("Could not register to apiGateway");
         
     }
     
