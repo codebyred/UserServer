@@ -26,14 +26,14 @@ app.listen(port, async (err) =>{
 
     console.log(`connection is established on ${port}`);
 
-    const register = async(req, res)=>{
+    const register = async()=>{
 
         const body = {
 
-            api:"user",
+            service:"user",
             host:"http://localhost",
-            port:3008,
-            url:"http://localhost:3008"
+            port,
+            url:`http://localhost:${port}`
     
         }
     
@@ -49,9 +49,7 @@ app.listen(port, async (err) =>{
     
         const apiGatewayURL = "http://localhost:3000/register";
 
-        const apiGatewayRes = await fetch(apiGatewayURL, fetchOptions);
-
-        const data = apiGatewayRes.json();
+        await fetch(apiGatewayURL, fetchOptions);
         
     }
 
