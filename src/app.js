@@ -47,7 +47,8 @@ app.listen(port, async (err) =>{
             credentials: "include",
         }
     
-        const apiGatewayURL = "http://localhost:3000/register";
+        const apiGatewayPort = "3020";
+        const apiGatewayURL =  `http://localhost:${apiGatewayPort}/register`;
 
         await fetch(apiGatewayURL, fetchOptions);
         

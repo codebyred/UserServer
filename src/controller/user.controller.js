@@ -1,4 +1,5 @@
 import {User} from "../model/user.model.js"
+import { v4 as uuidv4 } from 'uuid';
 
 export const getUser = async (req, res)=>{
 
@@ -10,8 +11,6 @@ export const getUser = async (req, res)=>{
         }
         
     });
-
-    
 
     return res.json(user);
 
@@ -29,14 +28,16 @@ export const postUser = async (req, res)=>{
 
     try{
 
-        const {id, firstName, lastName, email, password} = await req.body;
+        const {firstName, lastName, email, password} = await req.body;
+
+        const id = Math.floor(Math.random()* 10000);
 
         const user = await User.build({
-            id: id, 
-            firstName: firstName, 
-            lastName: lastName, 
-            email: email, 
-            password: password, 
+            id, 
+            firstName, 
+            lastName, 
+            email, 
+            password, 
         });
 
         await user.save();
