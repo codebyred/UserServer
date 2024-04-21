@@ -56,7 +56,7 @@ export const postUser = async (req, res)=>{
 export const updateUser = async (req, res)=>{
 
     const {id} = req.params;
-    const {firstName, lastName, email, category_id} = req.body;
+    const {firstName, lastName, email} = req.body;
 
     try{
 
@@ -64,7 +64,6 @@ export const updateUser = async (req, res)=>{
             firstName,
             lastName,
             email,
-            category_id
         },{
             where:{
                 id
